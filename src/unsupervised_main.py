@@ -329,7 +329,8 @@ def main():
 
         processed_pcd.point["positions"] = pos
         processed_pcd.point["gt_leaf_ids"] = cloud.point.leaf_ids[idx]
-        processed_pcd.point["pred_leaf_ids"] = np.expand_dims(leaf_id, axis=1)
+        processed_pcd.point["leaf_ids"] = np.expand_dims(leaf_id, axis=1)
+        processed_pcd.point["colors"] = cloud.point.colors[idx] 
         open3d.t.io.write_point_cloud(graph_path + plant + ".ply", processed_pcd)
 
         # good_leafs = leaf_id != -1
